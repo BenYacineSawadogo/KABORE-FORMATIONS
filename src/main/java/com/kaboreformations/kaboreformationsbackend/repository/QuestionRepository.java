@@ -1,6 +1,6 @@
-package repository;
+package com.kaboreformations.kaboreformationsbackend.repository;
 
-import model.Question;
+import com.kaboreformations.kaboreformationsbackend.model.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuestionRepository extends JpaRepository<Question,Long> {

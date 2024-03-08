@@ -1,9 +1,9 @@
-package controller;
+package com.kaboreformations.kaboreformationsbackend.controller;
 
-import model.Quizz;
+import com.kaboreformations.kaboreformationsbackend.model.Quizz;
+import com.kaboreformations.kaboreformationsbackend.service.QuizzSercice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.QuizzSercice;
 
 import java.util.List;
 

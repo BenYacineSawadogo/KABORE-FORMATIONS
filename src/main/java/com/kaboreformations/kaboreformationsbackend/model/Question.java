@@ -1,4 +1,4 @@
-package model;
+package com.kaboreformations.kaboreformationsbackend.model;
 
 
 import jakarta.persistence.*;

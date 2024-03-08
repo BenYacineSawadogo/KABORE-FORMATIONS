@@ -1,9 +1,9 @@
-package controller;
+package com.kaboreformations.kaboreformationsbackend.controller;
 
-import model.Answer;
+import com.kaboreformations.kaboreformationsbackend.model.Answer;
+import com.kaboreformations.kaboreformationsbackend.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.AnswerService;
 
 import java.util.List;
 

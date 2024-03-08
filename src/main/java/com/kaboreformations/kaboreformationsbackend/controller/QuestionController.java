@@ -1,9 +1,9 @@
-package controller;
+package com.kaboreformations.kaboreformationsbackend.controller;
 
-import model.Question;
+import com.kaboreformations.kaboreformationsbackend.service.QuestionService;
+import com.kaboreformations.kaboreformationsbackend.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.QuestionService;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class QuestionController {
     public List <Question> questionList(){return  questionService.questionList();}
     @PutMapping("/question/questionUpdate")
     public Question updateQuestion(@RequestBody Question question){return  questionService.updateQuestion(question);}
-    @DeleteMapping("/deleteQuestion/{1}")
+    @DeleteMapping("/deleteQuestion/{id}")
     public String deleteQuestion(@PathVariable Long id){return  questionService.deleteQuestion(id);}
 
 }

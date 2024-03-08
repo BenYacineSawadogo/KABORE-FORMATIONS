@@ -1,10 +1,9 @@
-package service;
+package com.kaboreformations.kaboreformationsbackend.service;
 
-import model.Answer;
-import model.Question;
+import com.kaboreformations.kaboreformationsbackend.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.QuestionRepository;
+import com.kaboreformations.kaboreformationsbackend.repository.QuestionRepository;
 
 import java.util.List;
 import java.util.Optional;
