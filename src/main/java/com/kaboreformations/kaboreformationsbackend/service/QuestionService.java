@@ -28,7 +28,7 @@ public class QuestionService {
 
     public Question updateQuestion(Question question){
         Question newQuestion;
-        Optional<Question> optionalQuestion = questionRepository.findById(question.getId());
+        Optional<Question> optionalQuestion = questionRepository.findById(question.getQuestionId());
         if(optionalQuestion.isPresent()){
             newQuestion = optionalQuestion.get();
             newQuestion.setQuestionText(question.getQuestionText());

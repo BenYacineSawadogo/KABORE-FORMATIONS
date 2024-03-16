@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/quizzes")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AnswerController {
     @Autowired
     private AnswerService answerService;

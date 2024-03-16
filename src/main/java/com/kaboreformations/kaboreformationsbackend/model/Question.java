@@ -1,6 +1,8 @@
 package com.kaboreformations.kaboreformationsbackend.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,14 +12,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "question")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionId")
 public class Question {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getType() {
         return type;
@@ -39,6 +35,14 @@ public class Question {
         return quizz;
     }
 
+    public Long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
+    }
+
     public void setQuizz(Quizz quizz) {
         this.quizz = quizz;
     }
@@ -46,7 +50,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "questionId")
-    private Long id;
+    private Long questionId;
 
     public String getQuestionText() {
         return questionText;
@@ -59,11 +63,22 @@ public class Question {
     private String questionText;
     @Column(name = "type")
     private String type;
+
+    public Long getQuizzId() {
+        return quizzId;
+    }
+
+    public void setQuizzId(Long quizzId) {
+        this.quizzId = quizzId;
+    }
+
+    @Column(name = "quizzId")
+    private Long quizzId;
     @ManyToOne
-    @JoinColumn(name = "quizzId",nullable = false)
+    @JoinColumn(name = "quizzId",referencedColumnName = "quizzId",updatable = false,insertable = false)
     private Quizz quizz;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
 }

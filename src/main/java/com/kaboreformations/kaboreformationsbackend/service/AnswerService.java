@@ -26,7 +26,7 @@ public class AnswerService {
     }
     public Answer updateAnswer(Answer answer){
         Answer newAnswer;
-        Optional<Answer> optionalAnswer = answerRepository.findById(answer.getId());
+        Optional<Answer> optionalAnswer = answerRepository.findById(answer.getAnswerId());
         if(optionalAnswer.isPresent()){
             newAnswer = optionalAnswer.get();
             newAnswer.setText(answer.getText());

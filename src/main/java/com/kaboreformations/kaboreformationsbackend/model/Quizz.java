@@ -1,5 +1,7 @@
 package com.kaboreformations.kaboreformationsbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,15 +11,24 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "quizz")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "quizzId")
 public class Quizz {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "quizzId")
-    private Long id;
+    private Long quizzId;
     @Column(name = "titre")
     private String titre;
-    @OneToMany(mappedBy = "quizz", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quizz",cascade = CascadeType.ALL,orphanRemoval = true)
     private List <Question> questions = new ArrayList<>();
+
+    public Long getQuizzId() {
+        return quizzId;
+    }
+
+    public void setQuizzId(Long quizzId) {
+        this.quizzId = quizzId;
+    }
 
     public String getTitre() {
         return titre;
@@ -27,19 +38,6 @@ public class Quizz {
         this.titre = titre;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
 }
+
+
